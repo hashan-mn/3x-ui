@@ -6,6 +6,10 @@ services:
     volumes:
       - $PWD/db/:/etc/x-ui/
       - $PWD/cert/:/root/cert/
+    ports:
+      - "54321:54321"
+      - "443:443"
+      - "80:80"
     networks:
       - dokploy-network
     environment:
