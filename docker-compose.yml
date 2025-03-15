@@ -4,13 +4,14 @@ services:
     container_name: 3x-ui
     hostname: vpn.vogoon.dev
     volumes:
-      - ./db/:/etc/x-ui/  # Use relative path instead of $PWD
-      - ./cert/:/root/cert/  # Use relative path instead of $PWD
+      - ./db/:/etc/x-ui/
+      - ./cert/:/root/cert/
     environment:
       XRAY_VMESS_AEAD_FORCED: "false"
       X_UI_ENABLE_FAIL2BAN: "true"
     tty: true
-    network_mode: host  # Remove this if you want to use custom networks
+    networks:
+      - mynetwork
     restart: unless-stopped
 
   nginx:
@@ -24,4 +25,10 @@ services:
       - ./cert/:/etc/nginx/cert/
     depends_on:
       - 3x-ui
+    networks:
+      - mynetwork
     restart: unless-stopped
+
+networks:
+  mynetwork:
+    name: mynetwork
