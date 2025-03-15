@@ -11,7 +11,7 @@ services:
       X_UI_ENABLE_FAIL2BAN: "true"
     tty: true
     networks:
-      - mynetwork
+      - dokploy-network
     restart: unless-stopped
 
   nginx:
