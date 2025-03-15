@@ -23,7 +23,7 @@ services:
     depends_on:
       - 3x-ui
     networks:
-      - mynetwork
+      - dokploy-network
     restart: unless-stopped
 
   certbot:
