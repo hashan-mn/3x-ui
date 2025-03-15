@@ -1,18 +1,16 @@
-version: "3"
-
 services:
   3x-ui:
     image: ghcr.io/mhsanaei/3x-ui:latest
     container_name: 3x-ui
     hostname: vpn.vogoon.dev
     volumes:
-      - $PWD/db/:/etc/x-ui/
-      - $PWD/cert/:/root/cert/
+      - ./db/:/etc/x-ui/  # Use relative path instead of $PWD
+      - ./cert/:/root/cert/  # Use relative path instead of $PWD
     environment:
       XRAY_VMESS_AEAD_FORCED: "false"
       X_UI_ENABLE_FAIL2BAN: "true"
     tty: true
-    network_mode: host
+    network_mode: host  # Remove this if you want to use custom networks
     restart: unless-stopped
 
   nginx:
