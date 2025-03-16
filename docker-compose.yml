@@ -1,12 +1,11 @@
 ---
 version: "3"
 
-environment:
-  - PWD=${PWD}
-  
 services:
   3x-ui:
     image: ghcr.io/mhsanaei/3x-ui:latest
+    environment:
+      - PWD=${PWD}
     container_name: 3x-ui
     hostname: vpn.vogoon.dev
     volumes:
