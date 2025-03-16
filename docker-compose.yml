@@ -4,8 +4,6 @@ version: "3"
 services:
   3x-ui:
     image: ghcr.io/mhsanaei/3x-ui:latest
-    environment:
-      - PWD=${PWD}
     container_name: 3x-ui
     hostname: vpn.vogoon.dev
     volumes:
@@ -14,6 +12,7 @@ services:
     environment:
       XRAY_VMESS_AEAD_FORCED: "false"
       X_UI_ENABLE_FAIL2BAN: "true"
+      - PWD=${PWD}
     tty: true
     networks:
       - dokploy-network
